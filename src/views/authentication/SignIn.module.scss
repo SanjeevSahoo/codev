@@ -1,0 +1,141 @@
+// variables
+
+$back-light: #cbe4fe;
+$back-dark: #1f2071;
+$back-side: #d6eaff;
+
+// classes
+
+.SignIn-main {
+  height: 100vh;
+  width: 100vw;
+
+  .login-section {
+    background-color: $back-light;
+    .login-inner {
+      height: 100%;
+      width: 100%;
+      .inner-top {
+        background-color: $back-dark;
+        height: 32%;
+      }
+      .inner-bottom {
+        background-color: $back-light;
+        height: 68%;
+      }
+    }
+  }
+
+  .side-section {
+    background-color: $back-dark;
+  }
+
+  .inner-div {
+    position: absolute;
+    height: 85vh;
+    width: 85vw;
+    max-height: 900px;
+    max-width: 1440px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+
+    .grid-main {
+      height: 100%;
+      width: 100%;
+
+      .grid-login {
+        background: white;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .login-inner {
+          height: 100%;
+          width: 100%;
+
+          .inner-top {
+            background-color: $back-light;
+            height: 29%;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+          }
+          .inner-bottom {
+            background-color: white;
+            height: 100%;
+            border-top-left-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .login-box {
+              width: 80%;
+            }
+          }
+        }
+      }
+
+      .grid-side {
+        background-color: $back-side;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+        .inner {
+          background-color: $back-side;
+        }
+      }
+    }
+  }
+
+  .inner-icon-div {
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .inner-icon {
+      width: 4rem;
+      height: 4rem;
+      background-color: $back-side;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .inner-div {
+      .grid-main {
+        .grid-login {
+          border-top-right-radius: 15px;
+          border-bottom-right-radius: 15px;
+
+          .login-inner {
+            .inner-bottom {
+              height: 71%;
+              border-top-left-radius: 0px;
+              border-bottom-left-radius: 15px;
+              border-bottom-right-radius: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    .inner-icon-div {
+      top: 29%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
