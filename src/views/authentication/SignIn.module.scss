@@ -67,12 +67,25 @@ $back-side: #d6eaff;
             background-color: white;
             height: 100%;
             border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
 
             .login-box {
-              width: 80%;
+              width: 70%;
+
+              .help-box {
+                position: absolute;
+                right: 0.5rem;
+                bottom: 0.5rem;
+              }
+
+              .locale-box {
+                position: absolute;
+                left: 0.5rem;
+                bottom: 0.5rem;
+              }
             }
           }
         }
@@ -127,6 +140,9 @@ $back-side: #d6eaff;
               border-top-left-radius: 0px;
               border-bottom-left-radius: 15px;
               border-bottom-right-radius: 15px;
+              .login-box {
+                width: 80%;
+              }
             }
           }
         }
