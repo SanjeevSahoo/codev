@@ -40,7 +40,8 @@ const formSchema = Yup.object().shape({
     .max(18, "Maximum 50 characters can be entered"),
 });
 const SignIn = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   const { handleSubmit, control, formState } = useForm<ILoginFormValue>({
     defaultValues: { email: "", password: "", remember: false },
     resolver: yupResolver(formSchema),
@@ -98,7 +99,7 @@ const SignIn = () => {
                       sx={{ textAlign: "center", marginBottom: 2 }}
                     >
                       <Typography variant="h5" component="h4" fontWeight="bold">
-                        Welcome to Codev Online
+                        {t("Welcome_to_Codev_Online")}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
@@ -246,9 +247,9 @@ const SignIn = () => {
                   <Box className={Styles["locale-box"]}>
                     <Select
                       size="small"
-                      sx={{ transform: "scale(0.625)", color: "#a6a6ab" }}
+                      sx={{ transform: "scale(0.625)", color: "#a6a6abc" }}
                       variant="standard"
-                      value={i18n.language}
+                      value={i18n.resolvedLanguage}
                       onChange={(e) => {
                         i18n.changeLanguage(e.target.value);
                       }}
