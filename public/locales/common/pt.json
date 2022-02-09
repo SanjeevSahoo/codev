@@ -1,0 +1,9 @@
+{
+  "buttons": {
+    "login": "Conecte-se",
+    "signup": "Inscrever-se",
+    "forgot_password": "Esqueceu a senha",
+    "contactus": "Contate-Nos",
+    "help": "Ajuda"
+  }
+}

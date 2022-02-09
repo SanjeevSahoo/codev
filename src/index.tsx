@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 
 import { ThemeProvider } from "@mui/material/styles";
@@ -23,8 +23,9 @@ ReactDOM.render(
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <CssBaseline />
-
-          <App />
+          <Suspense fallback="Loading...">
+            <App />
+          </Suspense>
         </Provider>
       </ThemeProvider>
     </ErrorBoundary>

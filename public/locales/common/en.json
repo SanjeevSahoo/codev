@@ -1,0 +1,9 @@
+{
+  "buttons": {
+    "login": "Log In",
+    "signup": "Sign Up",
+    "forgot_password": "Forgot Password",
+    "contactus": "Contact Us",
+    "help": "Help"
+  }
+}

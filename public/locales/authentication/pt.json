@@ -1,0 +1,21 @@
+{
+  "headings": {
+    "welcome": "Bem-vindo ao Codev Online"
+  },
+  "form": {
+    "texts": {
+      "signup": "Ainda não tem conta?",
+      "remember_me": "Lembre de mim"
+    },
+    "labels": {
+      "password": "Senha",
+      "email": "E-mail"
+    },
+    "yup": {
+      "required_email": "O e-mail não pode ficar em branco",
+      "required_password": "A senha não pode ficar em branco",
+      "max_email": "O comprimento do e-mail não pode ter mais de 100 caracteres",
+      "max_password": "O comprimento da senha não pode ter mais de 18 caracteres"
+    }
+  }
+}

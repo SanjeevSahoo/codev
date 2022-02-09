@@ -1,0 +1,21 @@
+{
+  "headings": {
+    "welcome": "Welcome to Codev Online"
+  },
+  "form": {
+    "texts": {
+      "signup": "Don't have account yet?",
+      "remember_me": "Remember Me"
+    },
+    "labels": {
+      "password": "Password",
+      "email": "Email"
+    },
+    "yup": {
+      "required_email": "Email cannot be blank",
+      "required_password": "Password cannot be blank",
+      "max_email": "Email length cannot be more than 100 characters",
+      "max_password": "Password length cannot be more than 18 characters"
+    }
+  }
+}

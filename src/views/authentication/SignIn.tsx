@@ -32,16 +32,18 @@ interface ILoginFormValue {
   remember: boolean;
 }
 
-const formSchema = Yup.object().shape({
-  email: Yup.string().required("Login Id is required"),
-  password: Yup.string()
-    .trim()
-    .required("Password is required")
-    .max(18, "Maximum 50 characters can be entered"),
-});
 const SignIn = () => {
-  const { t, i18n } = useTranslation();
-
+  const { t, i18n } = useTranslation(["common", "authentication"]);
+  const formSchema = Yup.object().shape({
+    email: Yup.string()
+      .trim()
+      .required(t("form.yup.required_email", { ns: "authentication" }))
+      .max(100, t("form.yup.max_email", { ns: "authentication" })),
+    password: Yup.string()
+      .trim()
+      .required(t("form.yup.required_password", { ns: "authentication" }))
+      .max(18, t("form.yup.max_password", { ns: "authentication" })),
+  });
   const { handleSubmit, control, formState } = useForm<ILoginFormValue>({
     defaultValues: { email: "", password: "", remember: false },
     resolver: yupResolver(formSchema),
@@ -99,7 +101,7 @@ const SignIn = () => {
                       sx={{ textAlign: "center", marginBottom: 2 }}
                     >
                       <Typography variant="h5" component="h4" fontWeight="bold">
-                        {t("Welcome_to_Codev_Online")}
+                        {t("headings.welcome", { ns: "authentication" })}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
@@ -110,7 +112,9 @@ const SignIn = () => {
                         }) => (
                           <FormControl fullWidth size="small">
                             <TextField
-                              label="Email"
+                              label={t("form.labels.email", {
+                                ns: "authentication",
+                              })}
                               type="text"
                               variant="standard"
                               size="small"
@@ -134,7 +138,9 @@ const SignIn = () => {
                         }) => (
                           <FormControl fullWidth size="small">
                             <TextField
-                              label="Password"
+                              label={t("form.labels.password", {
+                                ns: "authentication",
+                              })}
                               type="password"
                               variant="standard"
                               size="small"
@@ -176,7 +182,9 @@ const SignIn = () => {
                                     color: "gray",
                                   }}
                                 >
-                                  Remember Me
+                                  {t("form.texts.remember_me", {
+                                    ns: "authentication",
+                                  })}
                                 </span>
                               }
                             />
@@ -194,7 +202,9 @@ const SignIn = () => {
                             color: "gray",
                           }}
                         >
-                          Forgot Password
+                          {t("buttons.forgot_password", {
+                            ns: "common",
+                          })}
                         </span>
                       </Link>
                     </Grid>
@@ -207,7 +217,7 @@ const SignIn = () => {
                           onClick={handleSubmit(handleFormSubmit)}
                           sx={{ marginTop: 1 }}
                         >
-                          Log In
+                          {t("buttons.login", { ns: "common" })}
                         </Button>
                       </FormControl>
                     </Grid>
@@ -219,7 +229,7 @@ const SignIn = () => {
                           color: "gray",
                         }}
                       >
-                        Don't have account yet?
+                        {t("form.texts.signup", { ns: "authentication" })}
                       </Typography>{" "}
                       <Link href="#" color="inherit">
                         <span
@@ -228,7 +238,7 @@ const SignIn = () => {
                             color: "blueviolet",
                           }}
                         >
-                          Sign Up
+                          {t("buttons.signup", { ns: "common" })}
                         </span>
                       </Link>
                     </Grid>
@@ -320,7 +330,7 @@ const SignIn = () => {
                     size="small"
                     sx={{ marginTop: 5 }}
                   >
-                    Contact Us
+                    {t("buttons.contactus", { ns: "common" })}
                   </Button>
                   <Button
                     type="button"
@@ -329,7 +339,7 @@ const SignIn = () => {
                     size="small"
                     sx={{ marginTop: 5, marginLeft: 1 }}
                   >
-                    Help
+                    {t("buttons.help", { ns: "common" })}
                   </Button>
                 </Grid>
               </Grid>
