@@ -9,6 +9,9 @@ $back-side: #d6eaff;
 .SignIn-main {
   height: 100vh;
   width: 100vw;
+  min-height: 667px;
+  min-width: 375px;
+  position: relative;
 
   .login-section {
     background-color: $back-light;
@@ -34,6 +37,8 @@ $back-side: #d6eaff;
     position: absolute;
     height: 85vh;
     width: 85vw;
+    min-height: 600px;
+    min-width: 318px;
     max-height: 900px;
     max-width: 1440px;
     top: 50%;
@@ -129,6 +134,7 @@ $back-side: #d6eaff;
 
   @media (max-width: 900px) {
     .inner-div {
+      height: 90vh;
       .grid-main {
         .grid-login {
           border-top-right-radius: 15px;

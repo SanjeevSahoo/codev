@@ -94,13 +94,21 @@ const SignIn = () => {
               </Grid>
               <Grid item xs={12} className={Styles["inner-bottom"]}>
                 <Box className={Styles["login-box"]}>
-                  <Grid container spacing={3}>
+                  <Grid container spacing={{ xs: 2, md: 3 }}>
                     <Grid
                       item
                       xs={12}
-                      sx={{ textAlign: "center", marginBottom: 2 }}
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: 2,
+                      }}
                     >
-                      <Typography variant="h5" component="h4" fontWeight="bold">
+                      <Typography
+                        variant="h5"
+                        component="h4"
+                        fontWeight="bold"
+                        sx={{ fontSize: { xs: 18, md: 24 } }}
+                      >
                         {t("headings.welcome", { ns: "authentication" })}
                       </Typography>
                     </Grid>
@@ -176,16 +184,19 @@ const SignIn = () => {
                                 />
                               }
                               label={
-                                <span
-                                  style={{
-                                    fontSize: "0.825rem",
+                                <Typography
+                                  sx={{
+                                    fontSize: {
+                                      xs: "0.675rem",
+                                      md: "0.825rem",
+                                    },
                                     color: "gray",
                                   }}
                                 >
                                   {t("form.texts.remember_me", {
                                     ns: "authentication",
                                   })}
-                                </span>
+                                </Typography>
                               }
                             />
                           </FormControl>
@@ -196,16 +207,19 @@ const SignIn = () => {
                     </Grid>
                     <Grid item xs={6} sx={{ textAlign: "right" }}>
                       <Link href="#" color="inherit">
-                        <span
-                          style={{
-                            fontSize: "0.825rem",
+                        <Typography
+                          sx={{
+                            fontSize: {
+                              xs: "0.675rem",
+                              md: "0.825rem",
+                            },
                             color: "gray",
                           }}
                         >
                           {t("buttons.forgot_password", {
                             ns: "common",
                           })}
-                        </span>
+                        </Typography>
                       </Link>
                     </Grid>
                     <Grid item xs={12}>
@@ -225,21 +239,28 @@ const SignIn = () => {
                       <Typography
                         component="span"
                         sx={{
-                          fontSize: "0.875rem",
+                          fontSize: {
+                            xs: "0.725rem",
+                            md: "0.825rem",
+                          },
                           color: "gray",
                         }}
                       >
                         {t("form.texts.signup", { ns: "authentication" })}
                       </Typography>{" "}
                       <Link href="#" color="inherit">
-                        <span
-                          style={{
-                            fontSize: "0.875rem",
+                        <Typography
+                          component="span"
+                          sx={{
+                            fontSize: {
+                              xs: "0.725rem",
+                              md: "0.825rem",
+                            },
                             color: "blueviolet",
                           }}
                         >
                           {t("buttons.signup", { ns: "common" })}
-                        </span>
+                        </Typography>
                       </Link>
                     </Grid>
                   </Grid>
