@@ -12,26 +12,23 @@ export const userService = {
   delete: _delete,
 };
 
-function login(username: string, password: string) {
+function login(email: string, password: string) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ email, password }),
   };
 
   return fetch(`${config.APIURL_AUTH}/users/authenticate`, requestOptions)
     .then(handleResponse)
     .then((user) => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("user", JSON.stringify(user));
-
       return user;
     });
 }
 
 function logout() {
   // remove user from local storage to log user out
-  localStorage.removeItem("user");
+  localStorage.removeItem("remember");
 }
 
 function getAll() {
@@ -99,11 +96,12 @@ function handleResponse(response: Response) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         logout();
-        location.reload();
+        //location.reload();
+        return Promise.reject("UnAuthorized");
+      } else {
+        const error = (data && data.message) || response.statusText;
+        return Promise.reject(error);
       }
-
-      const error = (data && data.message) || response.statusText;
-      return Promise.reject(error);
     }
 
     return data;

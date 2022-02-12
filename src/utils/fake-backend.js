@@ -1,5 +1,12 @@
 // array in local storage for registered users
-let users = JSON.parse(localStorage.getItem("users")) || [];
+let users = JSON.parse(localStorage.getItem("users")) || [
+  {
+    id: 1,
+    email: "testUser@somemail.com",
+    password: "admin@123",
+    name: "Test User",
+  },
+];
 
 export function configureFakeBackend() {
   let realFetch = window.fetch;
@@ -32,17 +39,16 @@ export function configureFakeBackend() {
       // route functions
 
       function authenticate() {
-        const { username, password } = body;
+        const { email, password } = body;
         const user = users.find(
-          (x) => x.username === username && x.password === password
+          (x) => x.email === email && x.password === password
         );
-        if (!user) return error("Username or password is incorrect");
+        if (!user) return error("Invalid User");
         return ok({
           id: user.id,
-          username: user.username,
-          name: user.name,
-          password: "",
           email: user.email,
+          password: "",
+          name: user.name,
           token: "fake-jwt-token",
         });
       }
@@ -50,8 +56,8 @@ export function configureFakeBackend() {
       function register() {
         const user = body;
 
-        if (users.find((x) => x.username === user.username)) {
-          return error(`Username  ${user.username} is already taken`);
+        if (users.find((x) => x.email === user.email)) {
+          return error(`Email already in Use`);
         }
 
         // assign user id and a few other properties then save

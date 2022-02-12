@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -17,15 +19,19 @@ import theme from "./theme";
 import ErrorBoundary from "./components/ErrorBoundary";
 import store from "src/store";
 
+let persistor = persistStore(store);
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary screen="Application">
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <CssBaseline />
-          <Suspense fallback="Loading...">
-            <App />
-          </Suspense>
+          <PersistGate loading={null} persistor={persistor}>
+            <CssBaseline />
+            <Suspense fallback="Loading...">
+              <App />
+            </Suspense>
+          </PersistGate>
         </Provider>
       </ThemeProvider>
     </ErrorBoundary>
