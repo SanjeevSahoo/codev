@@ -5,15 +5,18 @@ import { persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 import loaderReducer from "./loaderSlice";
 import authReducer from "./authSlice";
+import notificationReducer from "./notificationSlice";
 
 const reducers = combineReducers({
   loader: loaderReducer,
   auth: authReducer,
+  notification: notificationReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

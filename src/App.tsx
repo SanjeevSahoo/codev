@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import ErrorBoundary from "./components/ErrorBoundary";
+import AlertNotification from "./components/layout/AlertNotification";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { configureFakeBackend } from "./utils/fake-backend";
 import AuthHome from "./views/authentication/AuthHome";
@@ -14,6 +15,7 @@ configureFakeBackend();
 function App() {
   return (
     <BrowserRouter>
+      <AlertNotification />
       <Routes>
         <Route path="/" element={<PrivateRoutes />}>
           <Route index element={<Navigate to="home" />} />

@@ -1,8 +1,13 @@
 interface IUser {
   id: number;
+  userid: string;
+  firstname: string;
+  lastname: string;
   email: string;
   password: string;
-  name: string;
+  contact: string;
+  brokerid: string;
+  office: string;
   token: string;
 }
 

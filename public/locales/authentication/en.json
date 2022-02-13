@@ -16,6 +16,10 @@
       "required_password": "Password cannot be blank",
       "max_email": "Email length cannot be more than 100 characters",
       "max_password": "Password length cannot be more than 18 characters"
+    },
+    "errors": {
+      "InvalidUser": "User Credentials is invalid. Login Unsuccessful.",
+      "defaultError": "Unknown Server Error, Try again"
     }
   }
 }

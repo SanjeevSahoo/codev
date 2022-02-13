@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { decryptData, encryptData } from "src/utils/crypto";
 import IUser from "src/types/user";
+import useNotification from "src/components/hooks/useNotification";
 
 interface ILoginFormValue {
   email: string;
@@ -30,6 +31,7 @@ interface ILoginFormValue {
 
 const SignIn = () => {
   const { t } = useTranslation(["common", "authentication"]);
+  const notification = useNotification();
 
   const formSchema = Yup.object().shape({
     email: Yup.string()
@@ -54,9 +56,14 @@ const SignIn = () => {
     const remember = localStorage.getItem("remember");
     let userState: IUser = {
       id: 0,
+      userid: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: "",
-      name: "",
+      contact: "",
+      brokerid: "",
+      office: "",
       token: "",
     };
     if (remember) {
@@ -69,7 +76,7 @@ const SignIn = () => {
     }
     dispatch(setAuth(userState));
     if (userState.token !== "") {
-      navigate("/home");
+      navigate("/home", { replace: true });
     }
   }, [dispatch, navigate]);
 
@@ -82,14 +89,23 @@ const SignIn = () => {
           localStorage.setItem("remember", encryptData(user));
         }
         dispatch(setAuth(user));
-        navigate("/home");
+        loader.hide();
+        setTimeout(() => {
+          navigate("/home", { replace: true });
+        }, 500);
       })
       .catch((error) => {
-        console.log(error);
+        loader.hide();
+        let errMessage = error;
+
+        if (errMessage.includes("Invalid User")) {
+          errMessage = t("form.errors.InvalidUser", { ns: "authentication" });
+        } else {
+          errMessage = t("form.errors.defaultError", { ns: "authentication" });
+        }
+
+        notification.show("warning", errMessage);
       });
-    setTimeout(() => {
-      loader.hide();
-    }, 2000);
   };
   return (
     <Grid container spacing={{ xs: 2, md: 3 }}>
@@ -147,6 +163,11 @@ const SignIn = () => {
                 value={value}
                 error={!!error}
                 onChange={onChange}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    handleSubmit(handleFormSubmit)();
+                  }
+                }}
                 InputLabelProps={{ shrink: true }}
                 helperText={error ? error.message : null}
               />

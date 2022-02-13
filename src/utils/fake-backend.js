@@ -2,9 +2,15 @@
 let users = JSON.parse(localStorage.getItem("users")) || [
   {
     id: 1,
+    username: "testUser",
+    firstname: "Test",
+    lastname: "User",
     email: "testUser@somemail.com",
     password: "admin@123",
-    name: "Test User",
+    contact: "",
+    brokerid: "2344",
+    office: "br",
+    token: "",
   },
 ];
 
@@ -46,9 +52,14 @@ export function configureFakeBackend() {
         if (!user) return error("Invalid User");
         return ok({
           id: user.id,
+          userid: user.userid,
+          firstname: user.firstname,
+          lastname: user.lastname,
           email: user.email,
           password: "",
-          name: user.name,
+          contact: user.contact,
+          brokerid: user.brokerid,
+          office: user.office,
           token: "fake-jwt-token",
         });
       }
