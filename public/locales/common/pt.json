@@ -4,6 +4,9 @@
     "signup": "Inscrever-se",
     "forgot_password": "Esqueceu a senha",
     "contactus": "Contate-Nos",
-    "help": "Ajuda"
+    "help": "Ajuda",
+    "register": "Registro",
+    "reset": "Redefinir",
+    "gotologin": "Ir para Entrar"
   }
 }

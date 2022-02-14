@@ -4,7 +4,6 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  Link,
   TextField,
   Typography,
 } from "@mui/material";
@@ -17,7 +16,7 @@ import useLoader from "src/components/hooks/useLoader";
 import { userService } from "src/services/user.services";
 import { useAppDispacth } from "src/store/hooks";
 import { setAuth } from "src/store/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { decryptData, encryptData } from "src/utils/crypto";
 import IUser from "src/types/user";
@@ -212,7 +211,11 @@ const SignIn = () => {
         />
       </Grid>
       <Grid item xs={6} sx={{ textAlign: "right" }}>
-        <Link href="#" color="inherit">
+        <Link
+          to="/auth-home/forgotpassword"
+          color="inherit"
+          style={{ color: "gray" }}
+        >
           <Typography
             sx={{
               fontSize: {
@@ -254,7 +257,11 @@ const SignIn = () => {
         >
           {t("form.texts.signup", { ns: "authentication" })}
         </Typography>{" "}
-        <Link href="#" color="inherit">
+        <Link
+          to="/auth-home/signup"
+          color="inherit"
+          style={{ color: "blueviolet" }}
+        >
           <Typography
             component="span"
             sx={{

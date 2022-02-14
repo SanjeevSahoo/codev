@@ -1,6 +1,7 @@
 {
   "headings": {
-    "welcome": "Welcome to Codev Online"
+    "welcome": "Welcome to Codev Online",
+    "signup": "New User Registration"
   },
   "form": {
     "texts": {
@@ -8,8 +9,15 @@
       "remember_me": "Remember Me"
     },
     "labels": {
+      "userid": "User Id",
       "password": "Password",
-      "email": "Email"
+      "confirmpassword": "Confirm Password",
+      "email": "Email",
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "contact": "Contact No",
+      "brokerid": "Broker Id",
+      "office": "Office"
     },
     "yup": {
       "required_email": "Email cannot be blank",

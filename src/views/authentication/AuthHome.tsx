@@ -17,13 +17,14 @@ import Styles from "./AuthHome.module.scss";
 
 import { useAppSelector } from "src/store/hooks";
 import logo_medium from "src/assets/images/logo_medium.png";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const AuthHome = () => {
   const { t, i18n } = useTranslation(["common", "authentication"]);
 
   const loadingState = useAppSelector((state) => state.loader.value);
   const authState = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   return (
     <Grid container className={Styles["AuthHome-main"]}>
@@ -65,10 +66,18 @@ const AuthHome = () => {
                     className={Styles["help-box"]}
                     display={{ xs: "flex", md: "none" }}
                   >
-                    <IconButton>
+                    <IconButton
+                      onClick={() => {
+                        navigate("contactus");
+                      }}
+                    >
                       <SupportAgentIcon />
                     </IconButton>
-                    <IconButton>
+                    <IconButton
+                      onClick={() => {
+                        navigate("help");
+                      }}
+                    >
                       <HelpCenterIcon />
                     </IconButton>
                   </Box>
@@ -149,6 +158,9 @@ const AuthHome = () => {
                     color="warning"
                     size="small"
                     sx={{ marginTop: 5 }}
+                    onClick={() => {
+                      navigate("contactus");
+                    }}
                   >
                     {t("buttons.contactus", { ns: "common" })}
                   </Button>
@@ -158,6 +170,9 @@ const AuthHome = () => {
                     color="info"
                     size="small"
                     sx={{ marginTop: 5, marginLeft: 1 }}
+                    onClick={() => {
+                      navigate("help");
+                    }}
                   >
                     {t("buttons.help", { ns: "common" })}
                   </Button>

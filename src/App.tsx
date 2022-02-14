@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route, Navigate } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
@@ -6,9 +7,14 @@ import AlertNotification from "./components/layout/AlertNotification";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { configureFakeBackend } from "./utils/fake-backend";
 import AuthHome from "./views/authentication/AuthHome";
-import SignIn from "./views/authentication/SignIn";
-import SignUp from "./views/authentication/SignUp";
-import Home from "./views/masterapp/Home";
+const ContactUs = React.lazy(() => import("./views/authentication/ContactUs"));
+const ForgotPassword = React.lazy(
+  () => import("./views/authentication/ForgotPassword")
+);
+const Help = React.lazy(() => import("./views/authentication/Help"));
+const SignIn = React.lazy(() => import("./views/authentication/SignIn"));
+const SignUp = React.lazy(() => import("./views/authentication/SignUp"));
+const Home = React.lazy(() => import("./views/masterapp/Home"));
 
 configureFakeBackend();
 
@@ -50,6 +56,30 @@ function App() {
             element={
               <ErrorBoundary screen="Page">
                 <SignUp />
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="forgotpassword"
+            element={
+              <ErrorBoundary screen="Page">
+                <ForgotPassword />
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="contactus"
+            element={
+              <ErrorBoundary screen="Page">
+                <ContactUs />
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="help"
+            element={
+              <ErrorBoundary screen="Page">
+                <Help />
               </ErrorBoundary>
             }
           />
