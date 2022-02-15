@@ -39,11 +39,12 @@ const SignIn = () => {
     email: Yup.string()
       .trim()
       .required(t("form.yup.required_email", { ns: "authentication" }))
-      .max(100, t("form.yup.max_email", { ns: "authentication" })),
+      .max(100, t("form.yup.max_email", { ns: "authentication", max: 100 })),
     password: Yup.string()
       .trim()
       .required(t("form.yup.required_password", { ns: "authentication" }))
-      .max(18, t("form.yup.max_password", { ns: "authentication" })),
+      .min(6, t("form.yup.min_password", { ns: "authentication", min: 6 }))
+      .max(18, t("form.yup.max_password", { ns: "authentication", max: 18 })),
   });
   const { handleSubmit, control, formState } = useForm<ILoginFormValue>({
     defaultValues: { email: "", password: "", remember: false },

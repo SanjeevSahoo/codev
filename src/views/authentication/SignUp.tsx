@@ -47,37 +47,43 @@ const SignUp = () => {
     userid: Yup.string()
       .trim()
       .required(t("form.yup.required_userid", { ns: "authentication" }))
-      .max(100, t("form.yup.max_userid", { ns: "authentication" })),
+      .max(100, t("form.yup.max_userid", { ns: "authentication", max: 100 })),
     firstname: Yup.string()
       .trim()
       .required(t("form.yup.required_firstname", { ns: "authentication" }))
-      .max(50, t("form.yup.max_firstname", { ns: "authentication" })),
+      .max(50, t("form.yup.max_firstname", { ns: "authentication", max: 50 })),
     lastname: Yup.string()
       .trim()
       .required(t("form.yup.required_lastname", { ns: "authentication" }))
-      .max(50, t("form.yup.max_lastname", { ns: "authentication" })),
+      .max(50, t("form.yup.max_lastname", { ns: "authentication", max: 50 })),
     email: Yup.string()
       .trim()
       .required(t("form.yup.required_email", { ns: "authentication" }))
-      .max(100, t("form.yup.max_email", { ns: "authentication" })),
+      .max(100, t("form.yup.max_email", { ns: "authentication", max: 100 })),
     password: Yup.string()
       .trim()
       .required(t("form.yup.required_password", { ns: "authentication" }))
-      .min(6, t("form.yup.min_password", { ns: "authentication" }))
-      .max(18, t("form.yup.max_password", { ns: "authentication" })),
+      .min(6, t("form.yup.min_password", { ns: "authentication", min: 6 }))
+      .max(18, t("form.yup.max_password", { ns: "authentication", max: 18 })),
     confirmpassword: Yup.string()
       .trim()
       .required(
         t("form.yup.required_confirmpassword", { ns: "authentication" })
       )
-      .max(6, t("form.yup.min_confirmpassword", { ns: "authentication" }))
-      .max(18, t("form.yup.max_confirmpassword", { ns: "authentication" })),
+      .min(
+        6,
+        t("form.yup.min_confirmpassword", { ns: "authentication", min: 6 })
+      )
+      .max(
+        18,
+        t("form.yup.max_confirmpassword", { ns: "authentication", max: 18 })
+      ),
     contact: Yup.string()
       .trim()
-      .max(15, t("form.yup.max_contact", { ns: "authentication" })),
+      .max(15, t("form.yup.max_contact", { ns: "authentication", max: 15 })),
     brokerid: Yup.string()
       .trim()
-      .max(20, t("form.yup.max_brokerid", { ns: "authentication" })),
+      .max(20, t("form.yup.max_brokerid", { ns: "authentication", max: 20 })),
   });
   const { handleSubmit, control, formState, reset } = useForm<ISignUpFormValue>(
     {
@@ -395,7 +401,7 @@ const SignUp = () => {
               </Button>
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <Button
                 color="info"
@@ -411,7 +417,7 @@ const SignUp = () => {
               </Button>
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <Button
                 color="info"

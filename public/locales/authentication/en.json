@@ -20,10 +20,22 @@
       "office": "Office"
     },
     "yup": {
+      "required_userid": "User Id is cannot be blank",
       "required_email": "Email cannot be blank",
       "required_password": "Password cannot be blank",
-      "max_email": "Email length cannot be more than 100 characters",
-      "max_password": "Password length cannot be more than 18 characters"
+      "required_firstname": "First Name cannot be blank",
+      "required_lastname": "Last Name cannot be blank",
+      "required_confirmpassword": "Confirm Password cannot be blank",
+      "max_userid": "User Id length cannot be more than {{max}} characters",
+      "max_email": "Email length cannot be more than {{max}} characters",
+      "max_password": "Password length cannot be more than {{max}} characters",
+      "max_firstname": "First Name length cannot be more than {{max}} characters",
+      "max_lastname": "Last Name length cannot be more than {{max}} characters",
+      "max_confirmpassword": "Confirm Password length cannot be more than {{max}} characters",
+      "max_contact": "Contact length cannot be more than {{max}} characters",
+      "max_brokerid": "Broker Id length cannot be more than {{max}} characters",
+      "min_password": "Password length cannot be less than {{min}} characters",
+      "min_confirmpassword": "Confirm Password length cannot be less than {{min}} characters"
     },
     "errors": {
       "InvalidUser": "User Credentials is invalid. Login Unsuccessful.",

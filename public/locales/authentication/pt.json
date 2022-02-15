@@ -20,10 +20,22 @@
       "office": "Escritório"
     },
     "yup": {
+      "required_userid": "O ID do usuário não pode ficar em branco",
       "required_email": "O e-mail não pode ficar em branco",
       "required_password": "A senha não pode ficar em branco",
-      "max_email": "O comprimento do e-mail não pode ter mais de 100 caracteres",
-      "max_password": "O comprimento da senha não pode ter mais de 18 caracteres"
+      "required_firstname": "O nome não pode ficar em branco",
+      "required_lastname": "O sobrenome não pode ficar em branco",
+      "required_confirmpassword": "Confirmar senha não pode ficar em branco",
+      "max_userid": "O comprimento do ID do usuário não pode ter mais de {{max}} caracteres",
+      "max_email": "O comprimento do e-mail não pode ter mais de {{max}} caracteres",
+      "max_password": "O comprimento da senha não pode ter mais de {{max}} caracteres",
+      "max_firstname": "O comprimento do nome não pode ter mais de {{max}} caracteres",
+      "max_lastname": "O comprimento do sobrenome não pode ter mais de {{max}} caracteres",
+      "max_confirmpassword": "Confirm Password length cannot be more than {{max}} characters",
+      "max_contact": "Contact length cannot be more than {{max}} characters",
+      "max_brokerid": "Broker Id length cannot be more than {{max}} characters",
+      "min_password": "O comprimento da senha não pode ser inferior a {{min}} caracteres",
+      "min_confirmpassword": "Confirmar o comprimento da senha não pode ser inferior a {{min}} caracteres"
     },
     "errors": {
       "InvalidUser": "As credenciais do usuário são inválidas. Login sem sucesso.",

@@ -109,7 +109,7 @@ $scrollbar-stylus: rgb(233, 233, 252);
 
             .box-outlet {
               flex: 1;
-              margin: 1rem 2.5rem;
+              margin: 1rem 2.75rem;
               overflow: auto;
               display: flex;
               justify-content: center;
@@ -196,6 +196,7 @@ $scrollbar-stylus: rgb(233, 233, 252);
 
               .box-outlet {
                 min-height: calc(100vh - 6rem - 220px);
+                margin: 1rem;
                 overflow: visible;
               }
             }
