@@ -1,0 +1,13 @@
+.SignIn-main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+@media (max-width: 900px) {
+  .SignIn-main {
+    padding: 1rem;
+  }
+}

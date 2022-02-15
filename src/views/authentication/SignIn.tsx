@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Checkbox,
   FormControl,
@@ -11,6 +12,8 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
+
+import Styles from "./SignIn.module.scss";
 
 import useLoader from "src/components/hooks/useLoader";
 import { userService } from "src/services/user.services";
@@ -107,161 +110,146 @@ const SignIn = () => {
       });
   };
   return (
-    <Grid container spacing={{ xs: 2, md: 3 }}>
-      <Grid
-        item
-        xs={12}
-        sx={{
-          textAlign: "center",
-          marginBottom: 2,
-        }}
-      >
-        <Typography
-          variant="h5"
-          component="h4"
-          fontWeight="bold"
-          sx={{ fontSize: { xs: 18, md: 24 } }}
-        >
-          {t("headings.welcome", { ns: "authentication" })}
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.email", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="email"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.password", {
-                  ns: "authentication",
-                })}
-                type="password"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                onKeyPress={(e) => {
-                  if (e.key === "Enter") {
-                    handleSubmit(handleFormSubmit)();
-                  }
-                }}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="password"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={6} sx={{ justifyContent: "left", alignItems: "center" }}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    onChange={onChange}
-                    size="small"
-                    style={{ paddingTop: 0, paddingBottom: 0 }}
-                  />
-                }
-                label={
-                  <Typography
-                    sx={{
-                      fontSize: {
-                        xs: "0.675rem",
-                        md: "0.825rem",
-                      },
-                      color: "gray",
-                    }}
-                  >
-                    {t("form.texts.remember_me", {
-                      ns: "authentication",
-                    })}
-                  </Typography>
-                }
-              />
-            </FormControl>
-          )}
-          name="remember"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={6} sx={{ textAlign: "right" }}>
-        <Link
-          to="/auth-home/forgotpassword"
-          color="inherit"
-          style={{ color: "gray" }}
-        >
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "0.675rem",
-                md: "0.825rem",
-              },
-              color: "gray",
-            }}
-          >
-            {t("buttons.forgot_password", {
-              ns: "common",
-            })}
-          </Typography>
-        </Link>
-      </Grid>
-      <Grid item xs={12}>
-        <FormControl fullWidth>
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={isSubmitting}
-            onClick={handleSubmit(handleFormSubmit)}
-            sx={{ marginTop: 1 }}
-          >
-            {t("buttons.login", { ns: "common" })}
-          </Button>
-        </FormControl>
-      </Grid>
-      <Grid item xs={12} sx={{ textAlign: "center" }}>
-        <Typography
-          component="span"
+    <Box className={Styles["SignIn-main"]}>
+      <Grid container spacing={{ xs: 2, md: 3 }}>
+        <Grid
+          item
+          xs={12}
           sx={{
-            fontSize: {
-              xs: "0.725rem",
-              md: "0.825rem",
-            },
-            color: "gray",
+            textAlign: "center",
+            marginTop: 3,
+            marginBottom: 2,
           }}
         >
-          {t("form.texts.signup", { ns: "authentication" })}
-        </Typography>{" "}
-        <Link
-          to="/auth-home/signup"
-          color="inherit"
-          style={{ color: "blueviolet" }}
-        >
+          <Typography
+            variant="h5"
+            component="h4"
+            fontWeight="bold"
+            sx={{ fontSize: { xs: 18, md: 24 } }}
+          >
+            {t("headings.welcome", { ns: "authentication" })}
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Controller
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <FormControl fullWidth size="small">
+                <TextField
+                  label={t("form.labels.email", {
+                    ns: "authentication",
+                  })}
+                  type="text"
+                  variant="standard"
+                  size="small"
+                  value={value}
+                  error={!!error}
+                  onChange={onChange}
+                  InputLabelProps={{ shrink: true }}
+                  helperText={error ? error.message : null}
+                />
+              </FormControl>
+            )}
+            name="email"
+            control={control}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Controller
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <FormControl fullWidth size="small">
+                <TextField
+                  label={t("form.labels.password", {
+                    ns: "authentication",
+                  })}
+                  type="password"
+                  variant="standard"
+                  size="small"
+                  value={value}
+                  error={!!error}
+                  onChange={onChange}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      handleSubmit(handleFormSubmit)();
+                    }
+                  }}
+                  InputLabelProps={{ shrink: true }}
+                  helperText={error ? error.message : null}
+                />
+              </FormControl>
+            )}
+            name="password"
+            control={control}
+          />
+        </Grid>
+        <Grid item xs={6} sx={{ justifyContent: "left", alignItems: "center" }}>
+          <Controller
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <FormControl fullWidth size="small">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      onChange={onChange}
+                      size="small"
+                      style={{ paddingTop: 0, paddingBottom: 0 }}
+                    />
+                  }
+                  label={
+                    <Typography
+                      sx={{
+                        fontSize: {
+                          xs: "0.675rem",
+                          md: "0.825rem",
+                        },
+                        color: "gray",
+                      }}
+                    >
+                      {t("form.texts.remember_me", {
+                        ns: "authentication",
+                      })}
+                    </Typography>
+                  }
+                />
+              </FormControl>
+            )}
+            name="remember"
+            control={control}
+          />
+        </Grid>
+        <Grid item xs={6} sx={{ textAlign: "right" }}>
+          <Link
+            to="/auth-home/forgotpassword"
+            color="inherit"
+            style={{ color: "gray" }}
+          >
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "0.675rem",
+                  md: "0.825rem",
+                },
+                color: "gray",
+              }}
+            >
+              {t("buttons.forgot_password", {
+                ns: "common",
+              })}
+            </Typography>
+          </Link>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl fullWidth>
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={isSubmitting}
+              onClick={handleSubmit(handleFormSubmit)}
+              sx={{ marginTop: 1 }}
+            >
+              {t("buttons.login", { ns: "common" })}
+            </Button>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sx={{ textAlign: "center" }}>
           <Typography
             component="span"
             sx={{
@@ -269,14 +257,32 @@ const SignIn = () => {
                 xs: "0.725rem",
                 md: "0.825rem",
               },
-              color: "blueviolet",
+              color: "gray",
             }}
           >
-            {t("buttons.signup", { ns: "common" })}
-          </Typography>
-        </Link>
+            {t("form.texts.signup", { ns: "authentication" })}
+          </Typography>{" "}
+          <Link
+            to="/auth-home/signup"
+            color="inherit"
+            style={{ color: "blueviolet" }}
+          >
+            <Typography
+              component="span"
+              sx={{
+                fontSize: {
+                  xs: "0.725rem",
+                  md: "0.825rem",
+                },
+                color: "blueviolet",
+              }}
+            >
+              {t("buttons.signup", { ns: "common" })}
+            </Typography>
+          </Link>
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 

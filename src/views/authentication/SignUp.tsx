@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Checkbox,
   FormControl,
@@ -11,6 +12,8 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
+
+import Styles from "./SignUp.module.scss";
 
 import useLoader from "src/components/hooks/useLoader";
 import { userService } from "src/services/user.services";
@@ -113,282 +116,320 @@ const SignUp = () => {
     //   });
   };
   return (
-    <Grid container spacing={{ xs: 2, md: 3 }}>
-      <Grid
-        item
-        xs={12}
-        sx={{
-          textAlign: "center",
-          marginBottom: 2,
-        }}
-      >
-        <Typography
-          variant="h5"
-          component="h4"
-          fontWeight="bold"
-          sx={{ fontSize: { xs: 18, md: 24 } }}
-        >
-          {t("headings.signup", { ns: "authentication" })}
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.userid", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
+    <Box className={Styles["SignUp-main"]}>
+      <Box className={Styles["form-heading"]}>
+        <Grid container>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              textAlign: "center",
+            }}
+          >
+            <Typography
+              variant="h5"
+              component="h4"
+              fontWeight="bold"
+              sx={{ fontSize: { xs: 18, md: 24 } }}
+            >
+              {t("headings.signup", { ns: "authentication" })}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box className={Styles["form-section"]}>
+        <Grid container spacing={{ xs: 2, md: 3 }}>
+          <Grid item xs={12}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.userid", {
+                      ns: "authentication",
+                    })}
+                    type="text"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="userid"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.password", {
+                      ns: "authentication",
+                    })}
+                    type="password"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="password"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.confirmpassword", {
+                      ns: "authentication",
+                    })}
+                    type="password"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="confirmpassword"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.email", {
+                      ns: "authentication",
+                    })}
+                    type="text"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="email"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.firstname", {
+                      ns: "authentication",
+                    })}
+                    type="text"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="firstname"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.lastname", {
+                      ns: "authentication",
+                    })}
+                    type="text"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="lastname"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.contact", {
+                      ns: "authentication",
+                    })}
+                    type="text"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="contact"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.brokerid", {
+                      ns: "authentication",
+                    })}
+                    type="text"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="brokerid"
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl fullWidth size="small">
+                  <TextField
+                    label={t("form.labels.office", {
+                      ns: "authentication",
+                    })}
+                    type="text"
+                    variant="standard"
+                    size="small"
+                    value={value}
+                    error={!!error}
+                    onChange={onChange}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleSubmit(handleFormSubmit)();
+                      }
+                    }}
+                    InputLabelProps={{ shrink: true }}
+                    helperText={error ? error.message : null}
+                  />
+                </FormControl>
+              )}
+              name="office"
+              control={control}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+      <Box className={Styles["form-footer"]}>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={isSubmitting}
+                onClick={handleSubmit(handleFormSubmit)}
+                sx={{ marginTop: 1 }}
+              >
+                {t("buttons.register", { ns: "common" })}
+              </Button>
             </FormControl>
-          )}
-          name="userid"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.password", {
-                  ns: "authentication",
-                })}
-                type="password"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="password"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.confirmpassword", {
-                  ns: "authentication",
-                })}
-                type="password"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="confirmpassword"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.email", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="email"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.firstname", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="firstname"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.lastname", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="lastname"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.contact", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="contact"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.brokerid", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
-            </FormControl>
-          )}
-          name="brokerid"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Controller
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth size="small">
-              <TextField
-                label={t("form.labels.office", {
-                  ns: "authentication",
-                })}
-                type="text"
-                variant="standard"
-                size="small"
-                value={value}
-                error={!!error}
-                onChange={onChange}
-                onKeyPress={(e) => {
-                  if (e.key === "Enter") {
-                    handleSubmit(handleFormSubmit)();
-                  }
+          </Grid>
+          <Grid item xs={6}>
+            <FormControl fullWidth>
+              <Button
+                color="info"
+                type="reset"
+                variant="outlined"
+                disabled={isSubmitting}
+                onClick={() => {
+                  reset(defaultFormValue);
                 }}
-                InputLabelProps={{ shrink: true }}
-                helperText={error ? error.message : null}
-              />
+                sx={{ marginTop: 1 }}
+              >
+                {t("buttons.reset", { ns: "common" })}
+              </Button>
             </FormControl>
-          )}
-          name="office"
-          control={control}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <FormControl fullWidth>
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={isSubmitting}
-            onClick={handleSubmit(handleFormSubmit)}
-            sx={{ marginTop: 1 }}
-          >
-            {t("buttons.register", { ns: "common" })}
-          </Button>
-        </FormControl>
-      </Grid>
-      <Grid item xs={6}>
-        <FormControl fullWidth>
-          <Button
-            color="info"
-            type="reset"
-            variant="outlined"
-            disabled={isSubmitting}
-            onClick={() => {
-              reset(defaultFormValue);
-            }}
-            sx={{ marginTop: 1 }}
-          >
-            {t("buttons.reset", { ns: "common" })}
-          </Button>
-        </FormControl>
-      </Grid>
-      <Grid item xs={6}>
-        <FormControl fullWidth>
-          <Button
-            color="info"
-            type="button"
-            variant="outlined"
-            disabled={isSubmitting}
-            onClick={() => {
-              navigate("signin");
-            }}
-            sx={{ marginTop: 1 }}
-          >
-            {t("buttons.gotologin", { ns: "common" })}
-          </Button>
-        </FormControl>
-      </Grid>
-    </Grid>
+          </Grid>
+          <Grid item xs={6}>
+            <FormControl fullWidth>
+              <Button
+                color="info"
+                type="button"
+                variant="outlined"
+                disabled={isSubmitting}
+                onClick={() => {
+                  navigate("signin");
+                }}
+                sx={{ marginTop: 1 }}
+              >
+                {t("buttons.gotologin", { ns: "common" })}
+              </Button>
+            </FormControl>
+          </Grid>
+        </Grid>
+      </Box>
+    </Box>
   );
 };
 

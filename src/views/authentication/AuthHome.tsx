@@ -27,77 +27,68 @@ const AuthHome = () => {
   const navigate = useNavigate();
 
   return (
-    <Grid container className={Styles["AuthHome-main"]}>
-      <Grid item xs={12} md={6} className={Styles["login-section"]}>
-        <Grid container className={Styles["login-inner"]}>
-          <Grid
-            item
-            xs={12}
-            display={{ xs: "block", md: "none" }}
-            className={Styles["inner-top"]}
-          ></Grid>
-          <Grid item xs={12} className={Styles["inner-bottom"]}></Grid>
-        </Grid>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        md={6}
-        className={Styles["side-section"]}
+    <Box className={Styles["AuthHome-main"]}>
+      <Box className={Styles["login-background"]}></Box>
+      <Box
+        className={Styles["side-background"]}
         display={{ xs: "none", md: "block" }}
-      ></Grid>
-      <Box className={Styles["inner-div"]} sx={{ boxShadow: 10 }}>
-        <Grid container className={Styles["grid-main"]}>
-          <Grid item xs={12} md={6} className={Styles["grid-login"]}>
-            <Grid container className={Styles["login-inner"]}>
-              <Grid
-                item
-                xs={12}
+      ></Box>
+      <Box className={Styles["wrapper-div"]}>
+        <Box className={Styles["inner-div"]} sx={{ boxShadow: 10 }}>
+          <Box className={Styles["login-section"]}>
+            <Box className={Styles["login-inner"]}>
+              <Box
+                className={Styles["inner-top"]}
                 display={{ xs: "block", md: "none" }}
                 sx={{ textAlign: "center" }}
-                className={Styles["inner-top"]}
               >
                 <img src={logo_medium} alt="Codev" height={120} />
-              </Grid>
-              <Grid item xs={12} className={Styles["inner-bottom"]}>
-                <Box className={Styles["login-box"]}>
+              </Box>
+              <Box className={Styles["inner-bottom"]}>
+                <Box className={Styles["box-outlet"]}>
                   <Outlet />
-                  <Box
-                    className={Styles["help-box"]}
-                    display={{ xs: "flex", md: "none" }}
-                  >
-                    <IconButton
-                      onClick={() => {
-                        navigate("contactus");
-                      }}
-                    >
-                      <SupportAgentIcon />
-                    </IconButton>
-                    <IconButton
-                      onClick={() => {
-                        navigate("help");
-                      }}
-                    >
-                      <HelpCenterIcon />
-                    </IconButton>
-                  </Box>
-                  <Box className={Styles["locale-box"]}>
-                    <Select
-                      size="small"
-                      sx={{ transform: "scale(0.625)", color: "#a6a6abc" }}
-                      variant="standard"
-                      value={i18n.resolvedLanguage}
-                      onChange={(e) => {
-                        i18n.changeLanguage(e.target.value);
-                      }}
-                    >
-                      <MenuItem value="en">English</MenuItem>
-                      <MenuItem value="pt">Portugese</MenuItem>
-                    </Select>
-                  </Box>
                 </Box>
-              </Grid>
-            </Grid>
+                <Box className={Styles["box-bottom"]}>
+                  <Grid container>
+                    <Grid item xs={6} sx={{ textAlign: "left" }}>
+                      <Select
+                        size="small"
+                        sx={{ transform: "scale(0.625)", color: "#a6a6abc" }}
+                        variant="standard"
+                        value={i18n.resolvedLanguage}
+                        onChange={(e) => {
+                          i18n.changeLanguage(e.target.value);
+                        }}
+                      >
+                        <MenuItem value="en">English</MenuItem>
+                        <MenuItem value="pt">Portugese</MenuItem>
+                      </Select>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                      sx={{ textAlign: "right" }}
+                      display={{ xs: "block", md: "none" }}
+                    >
+                      <IconButton
+                        onClick={() => {
+                          navigate("contactus");
+                        }}
+                      >
+                        <SupportAgentIcon />
+                      </IconButton>
+                      <IconButton
+                        onClick={() => {
+                          navigate("help");
+                        }}
+                      >
+                        <HelpCenterIcon />
+                      </IconButton>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
+            </Box>
             <Box className={Styles["inner"]}></Box>
             <Box className={Styles["inner-icon-div"]}>
               <Box className={Styles["inner-icon"]}>
@@ -110,13 +101,10 @@ const AuthHome = () => {
                 )}
               </Box>
             </Box>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
+          </Box>
+          <Box
+            className={Styles["side-section"]}
             display={{ xs: "none", md: "flex" }}
-            className={Styles["grid-side"]}
             sx={{ justifyContent: "center" }}
           >
             <Box
@@ -191,10 +179,10 @@ const AuthHome = () => {
                 )}
               </Box>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Box>
-    </Grid>
+    </Box>
   );
 };
 

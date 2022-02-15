@@ -1,0 +1,30 @@
+.SignUp-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .form-heading {
+    padding: 1rem 0;
+  }
+
+  .form-section {
+    flex: 1;
+    height: 100%;
+    padding: 1rem;
+    overflow: auto;
+  }
+
+  .form-footer {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .SignUp-main {
+    display: block;
+
+    .form-heading {
+      padding: 2rem 0;
+    }
+  }
+}

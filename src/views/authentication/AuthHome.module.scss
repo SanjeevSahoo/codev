@@ -3,101 +3,125 @@
 $back-light: #cbe4fe;
 $back-dark: #1f2071;
 $back-side: #d6eaff;
+$scrollbar-back: rgb(234, 235, 243);
+$scrollbar-stylus: rgb(233, 233, 252);
+// Scrollbar Styles
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: $scrollbar-stylus;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  &:hover {
+    background: $scrollbar-back;
+  }
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-stylus transparent;
+}
 
 // classes
 
 .AuthHome-main {
   height: 100vh;
   width: 100vw;
-  min-height: 667px;
-  min-width: 375px;
   position: relative;
+  display: flex;
+  flex-direction: row;
 
-  .login-section {
+  .login-background {
     background-color: $back-light;
-    .login-inner {
-      height: 100%;
-      width: 100%;
-      .inner-top {
-        background-color: $back-dark;
-        height: 32%;
-      }
-      .inner-bottom {
-        background-color: $back-light;
-        height: 68%;
-      }
-    }
+    flex: 1;
+    height: 100%;
   }
 
-  .side-section {
+  .side-background {
     background-color: $back-dark;
+    flex: 1;
+    height: 100%;
   }
 
-  .inner-div {
+  .wrapper-div {
     position: absolute;
-    height: 85vh;
-    width: 85vw;
-    min-height: 600px;
-    min-width: 318px;
-    max-height: 900px;
-    max-width: 1440px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 15px;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
 
-    .grid-main {
-      height: 100%;
-      width: 100%;
+    .inner-div {
+      position: relative;
+      height: 85vh;
+      width: 85vw;
+      min-height: 600px;
+      max-height: 900px;
+      max-width: 1440px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: row;
 
-      .grid-login {
+      .login-section {
+        flex: 1;
+        height: 100%;
         background: white;
         border-top-left-radius: 15px;
         border-bottom-left-radius: 15px;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
 
         .login-inner {
+          flex: 1;
           height: 100%;
-          width: 100%;
+          display: flex;
+          flex-direction: column;
 
           .inner-top {
+            height: 180px;
             background-color: $back-light;
-            height: 29%;
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
           }
           .inner-bottom {
-            background-color: white;
+            flex: 1;
             height: 100%;
-
+            background-color: white;
             border-top-left-radius: 15px;
             border-bottom-left-radius: 15px;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
 
-            .login-box {
-              width: 70%;
-
-              .help-box {
-                position: absolute;
-                right: 0.5rem;
-                bottom: 0.5rem;
-              }
-
-              .locale-box {
-                position: absolute;
-                left: 0.5rem;
-                bottom: 0.5rem;
-              }
+            .box-outlet {
+              flex: 1;
+              margin: 1rem 2.5rem;
+              overflow: auto;
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
           }
         }
       }
 
-      .grid-side {
+      .side-section {
+        flex: 1;
+        height: 100%;
         background-color: $back-side;
         border-top-right-radius: 15px;
         border-bottom-right-radius: 15px;
@@ -107,58 +131,82 @@ $back-side: #d6eaff;
         }
       }
     }
-  }
 
-  .inner-icon-div {
-    position: absolute;
-    height: 5rem;
-    width: 5rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .inner-icon {
-      width: 4rem;
-      height: 4rem;
-      background-color: $back-side;
+    .inner-icon-div {
+      position: absolute;
+      height: 5rem;
+      width: 5rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      .inner-icon {
+        width: 4rem;
+        height: 4rem;
+        background-color: $back-side;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
+}
 
-  @media (max-width: 900px) {
-    .inner-div {
-      height: 90vh;
-      .grid-main {
-        .grid-login {
+@media (max-width: 900px) {
+  .AuthHome-main {
+    flex-direction: column;
+
+    .login-background {
+      background-color: $back-dark;
+      height: auto;
+    }
+
+    .wrapper-div {
+      padding: 2rem;
+      display: block;
+      .inner-div {
+        height: auto;
+        width: 100%;
+        min-height: auto;
+        max-height: none;
+        max-width: none;
+        display: block;
+        flex-direction: column;
+        .login-section {
+          height: auto;
+          display: block;
           border-top-right-radius: 15px;
           border-bottom-right-radius: 15px;
 
           .login-inner {
+            height: auto;
+            display: block;
             .inner-bottom {
-              height: 71%;
+              height: auto;
+              display: block;
               border-top-left-radius: 0px;
               border-bottom-left-radius: 15px;
               border-bottom-right-radius: 15px;
-              .login-box {
-                width: 80%;
+
+              .box-outlet {
+                min-height: calc(100vh - 6rem - 220px);
+                overflow: visible;
               }
             }
           }
         }
       }
-    }
 
-    .inner-icon-div {
-      top: 29%;
-      transform: translate(-50%, -50%);
+      .inner-icon-div {
+        top: 180px;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 }
