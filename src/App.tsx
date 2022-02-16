@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import ErrorBoundary from "./components/ErrorBoundary";
 import AlertNotification from "./components/layout/AlertNotification";
+
 import PrivateRoutes from "./components/PrivateRoutes";
 import { configureFakeBackend } from "./utils/fake-backend";
 import AuthHome from "./views/authentication/AuthHome";
@@ -34,6 +35,7 @@ function App() {
             }
           />
         </Route>
+
         <Route
           path="auth-home"
           element={

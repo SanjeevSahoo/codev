@@ -35,11 +35,17 @@
       "max_contact": "Contact length cannot be more than {{max}} characters",
       "max_brokerid": "Broker Id length cannot be more than {{max}} characters",
       "min_password": "Password length cannot be less than {{min}} characters",
-      "min_confirmpassword": "Confirm Password length cannot be less than {{min}} characters"
+      "min_confirmpassword": "Confirm Password length cannot be less than {{min}} characters",
+      "match_confirmpassword": "Password and Confirm Password must match"
     },
     "errors": {
       "InvalidUser": "User Credentials is invalid. Login Unsuccessful.",
+      "UserIdExists": "User Id already in use",
+      "EmailExists": "Email already in use",
       "defaultError": "Unknown Server Error, Try again"
+    },
+    "success": {
+      "UserRegistered": "User Registered Successfully"
     }
   }
 }

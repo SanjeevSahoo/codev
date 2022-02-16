@@ -8,5 +8,8 @@
     "register": "Registro",
     "reset": "Redefinir",
     "gotologin": "Ir para Entrar"
+  },
+  "texts": {
+    "loading_wait": "Carregando...! Por favor, aguarde"
   }
 }

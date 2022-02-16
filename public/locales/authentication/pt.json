@@ -35,11 +35,17 @@
       "max_contact": "Contact length cannot be more than {{max}} characters",
       "max_brokerid": "Broker Id length cannot be more than {{max}} characters",
       "min_password": "O comprimento da senha não pode ser inferior a {{min}} caracteres",
-      "min_confirmpassword": "Confirmar o comprimento da senha não pode ser inferior a {{min}} caracteres"
+      "min_confirmpassword": "Confirmar o comprimento da senha não pode ser inferior a {{min}} caracteres",
+      "match_confirmpassword": "Senha e Confirmar Senha devem corresponder"
     },
     "errors": {
       "InvalidUser": "As credenciais do usuário são inválidas. Login sem sucesso.",
+      "UserIdExists": "ID de usuário já em uso",
+      "EmailExists": "Email já em uso",
       "defaultError": "Erro de servidor desconhecido, tente novamente"
+    },
+    "success": {
+      "UserRegistered": "Usuário cadastrado com sucesso"
     }
   }
 }

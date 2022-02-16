@@ -2,7 +2,7 @@
 let users = JSON.parse(localStorage.getItem("users")) || [
   {
     id: 1,
-    username: "testUser",
+    userid: "testUser",
     firstname: "Test",
     lastname: "User",
     email: "testUser@somemail.com",
@@ -71,7 +71,11 @@ export function configureFakeBackend() {
           return error(`Email already in Use`);
         }
 
-        // assign user id and a few other properties then save
+        if (users.find((x) => x.userid === user.userid)) {
+          return error(`User Id already in Use`);
+        }
+
+        // assign  id and a few other properties then save
         user.id = users.length ? Math.max(...users.map((x) => x.id)) + 1 : 1;
         users.push(user);
         localStorage.setItem("users", JSON.stringify(users));

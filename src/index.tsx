@@ -18,6 +18,7 @@ import "./index.css";
 import theme from "./theme";
 import ErrorBoundary from "./components/ErrorBoundary";
 import store from "src/store";
+import LoadingPage from "./components/layout/LoadingPage";
 
 let persistor = persistStore(store);
 
@@ -28,7 +29,7 @@ ReactDOM.render(
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <CssBaseline />
-            <Suspense fallback="Loading...">
+            <Suspense fallback={<LoadingPage />}>
               <App />
             </Suspense>
           </PersistGate>

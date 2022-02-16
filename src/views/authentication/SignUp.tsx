@@ -1,9 +1,7 @@
 import {
   Box,
   Button,
-  Checkbox,
   FormControl,
-  FormControlLabel,
   Grid,
   TextField,
   Typography,
@@ -17,12 +15,7 @@ import Styles from "./SignUp.module.scss";
 
 import useLoader from "src/components/hooks/useLoader";
 import { userService } from "src/services/user.services";
-import { useAppDispacth } from "src/store/hooks";
-import { setAuth } from "src/store/authSlice";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { decryptData, encryptData } from "src/utils/crypto";
-import IUser from "src/types/user";
+import { useNavigate } from "react-router-dom";
 import useNotification from "src/components/hooks/useNotification";
 import ISignUpFormValue from "src/types/ISignUpFormValue";
 
@@ -37,6 +30,7 @@ const defaultFormValue: ISignUpFormValue = {
   contact: "",
   brokerid: "",
   office: "",
+  token: "",
 };
 
 const SignUp = () => {
@@ -77,6 +71,13 @@ const SignUp = () => {
       .max(
         18,
         t("form.yup.max_confirmpassword", { ns: "authentication", max: 18 })
+      )
+      .test(
+        "passwords-match",
+        t("form.yup.match_password", { ns: "authentication" }),
+        function (value) {
+          return this.parent.password === value;
+        }
       ),
     contact: Yup.string()
       .trim()
@@ -93,33 +94,33 @@ const SignUp = () => {
   );
   const { isSubmitting } = formState;
   const loader = useLoader();
-  const dispatch = useAppDispacth();
   const navigate = useNavigate();
 
   const handleFormSubmit: SubmitHandler<ISignUpFormValue> = (values) => {
-    // loader.show();
-    // userService
-    //   .login(values.email, values.password)
-    //   .then((user) => {
-    //     if (values.remember) {
-    //       localStorage.setItem("remember", encryptData(user));
-    //     }
-    //     dispatch(setAuth(user));
-    //     loader.hide();
-    //     setTimeout(() => {
-    //       navigate("/home", { replace: true });
-    //     }, 500);
-    //   })
-    //   .catch((error) => {
-    //     loader.hide();
-    //     let errMessage = error;
-    //     if (errMessage.includes("Invalid User")) {
-    //       errMessage = t("form.errors.InvalidUser", { ns: "authentication" });
-    //     } else {
-    //       errMessage = t("form.errors.defaultError", { ns: "authentication" });
-    //     }
-    //     notification.show("warning", errMessage);
-    //   });
+    loader.show();
+    userService
+      .register(values)
+      .then(() => {
+        loader.hide();
+        reset(defaultFormValue);
+        notification.show(
+          "success",
+          t("form.success.UserRegistered", { ns: "authentication" })
+        );
+      })
+      .catch((error) => {
+        loader.hide();
+        debugger;
+        let errMessage = error;
+        if (errMessage.includes("User Id already in Use")) {
+          errMessage = t("form.errors.UserIdExists", { ns: "authentication" });
+        } else if (errMessage.includes("Email already in Use")) {
+          errMessage = t("form.errors.EmailExists", { ns: "authentication" });
+        } else {
+          errMessage = t("form.errors.defaultError", { ns: "authentication" });
+        }
+        notification.show("warning", errMessage);
+      });
   };
   return (
     <Box className={Styles["SignUp-main"]}>

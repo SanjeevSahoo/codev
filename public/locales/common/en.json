@@ -8,5 +8,8 @@
     "register": "Register",
     "reset": "Reset",
     "gotologin": "Go To SignIn"
+  },
+  "texts": {
+    "loading_wait": "Loading...! Please Wait"
   }
 }
